@@ -23,7 +23,7 @@ const Sidebar = () => {
 
   const newB = [
     { name: "All projects", icon: <PiWaveformFill />, href: "/proj" },
-    { name: "Messages", icon: <AiOutlineMessage />, href: "/signup" },
+    { name: "Messages", icon: <AiOutlineMessage />, href: "/msg" },
     { name: "Logout", icon: <CiLogout />, href: "/signup" },
   ];
   return (

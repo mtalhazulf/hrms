@@ -26,10 +26,10 @@ const Template = () => {
     ]
 
   return (
-    <div className="flex flex-col items-center justify-center space-y-4 lg:w-[950px] md:w-[750px] w-[400px] h-[600px] bg-indigo-950 rounded-xl overflow-y-auto">
+    <div className="flex flex-col items-center justify-center space-y-4 lg:w-[950px] md:w-[750px] w-[400px] h-[600px] bg-[#282346] rounded-xl overflow-y-auto relative">
 
-{data.map ((data,index)=>(
-      <div key={index} className=" flex flex-col items-center justify-center lg:w-[810px] md:w-[650px] w-[350px] h-[163px] bg-indigo-800 rounded-[15px] ">
+   {data.map ((data,index)=>(
+      <div key={index} className=" flex flex-col items-center justify-center lg:w-[810px] md:w-[650px] w-[350px] h-[163px] bg-[#56429C] rounded-[15px] ">
         <div className="flex md:flex-row flex-col md:justify-between  items-center px-2 w-full">
           <h1 className="text-white pl-6">{data.name}</h1>
           <div className="flex flex-col items-start justify-center space-y-4">
@@ -63,6 +63,9 @@ const Template = () => {
         </div>
       </div>
         ))}
+            <button className=' mt-2 outline-dashed rounded-2xl border-none border-indigo-400 w-[85%] text-indigo-400 font-semibold p-2 absolute bottom-5'>➕ Add a Team</button>
+  
+    
     </div>
   );
 };

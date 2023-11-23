@@ -79,7 +79,7 @@ const Table = () => {
             </>
         ))}
       </div>
-      <button className=' mt-2 outline-dashed rounded-2xl border-none border-indigo-400 w-[90%] text-indigo-400 font-semibold p-2'>➕ Add a Project</button>
+      <button className=' mt-4 outline-dashed rounded-2xl border-none border-indigo-400 w-[90%] text-indigo-400 font-semibold p-2 '>➕ Add a Project</button>
    </div>
 
   )

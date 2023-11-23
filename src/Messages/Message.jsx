@@ -1,11 +1,35 @@
-import React from 'react'
+import React from "react";
+import Siderbar from "../Components/Sidebar";
+import Interface from "./Interface";
+import { useState } from "react";
 
-const Message = () => {
+const Messages = () => {
+
+  const [data, setData] = useState([
+    {
+      imgSrc: "hasan.jpg",
+      name: "Hasan",
+      msg: "Hello, World!",
+    },
+    {
+      imgSrc: "hasan.jpg",
+      name: "Talha",
+      msg: "Hello, Kings how are you!",
+    },
+    
+    
+  ]);
+
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <div className="flex lg:flex-row flex-col lg:justify-between w-full">
+      <Siderbar />
 
-export default Message
+      <div className="flex flex-col lg:w-[86%] w-full min-h-screen items-center justify-center space-y-8 bg-[#13111A] relative overflow-y-auto">
+        <h1 className="text-white text-3xl">Messages</h1>
+        <Interface data={data} />
+      </div>
+    </div>
+  );
+};
+
+export default Messages;
