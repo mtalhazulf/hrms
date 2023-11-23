@@ -20,7 +20,7 @@ const Progress = ({ emoji, name, amount,percentage }) => {
             pathColor: "#75E6F2", // Change the path color as needed
             trailColor: "#67748399",
           })}
-          className="h-32 w-32 rounded-full mt-6 pt-4 "
+          className="h-32 w-32 rounded-full mt-6 pt-4 flex flex-col items-center justify-center "
         />
         <p className="text-white text-lg ">Completion Rate</p>
       </div>
