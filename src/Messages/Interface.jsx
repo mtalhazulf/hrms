@@ -2,7 +2,7 @@ import React from "react";
 
 const Interface = ({ data }) => {
   return (
-    <div className="flex flex-col items-center justify-center space-y-4 lg:w-[950px] md:w-[700px] w-[500px] h-[600px] bg-[#282346] rounded-xl overflow-y-auto relative">
+    <div className="flex flex-col items-center justify-center space-y-4 lg:w-[950px] md:w-[700px] w-[400px] h-[600px] bg-[#282346] rounded-xl overflow-y-auto relative">
       {data.map((item, index) => (
         <div className="bg-[#393857] flex flex-col items-start p-2 w-[90%] rounded-lg">
           <div key={index} className="flex items-center space-x-2">
