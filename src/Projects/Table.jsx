@@ -81,9 +81,9 @@ const Table = () => {
         {data.map ((item,index)=>(
             <>
             <div key={index} className='flex flex-row justify-between  items-center w-full'>
-            <p className='text-white text-md font-bold'>{item.name}</p>
-            <p className='text-cyan-300 text-md font-semibold'>{item.deadline}</p>
-            <p className='text-white text-md font-bold'>{item.teamLead}</p>
+            <p className='text-white text-md font-bold w-16 ml-2'>{item.name}</p>
+            <p className='text-cyan-300 text-md font-semibold w-20 ml-20'>{item.deadline}</p>
+            <p className='text-white text-md font-bold w-16 ml-10'>{item.teamLead}</p>
             <button  className='bg-emerald-300 rounded p-2 text-indigo-800 text-md font-bold'>{item.status}</button>
             </div>
             <div className="w-full h-[0px] border border-white border-opacity-10"></div>
@@ -97,3 +97,9 @@ const Table = () => {
 }
 
 export default Table
+
+
+/*         <p className='text-white text-md font-bold w-16 ml-2'>{item.name}</p>
+            <p className='text-cyan-300 text-md font-semibold w-20 ml-20'>{item.deadline}</p>
+            <p className='text-white text-md font-bold ml-10  w-16'>{item.teamLead}</p>
+              */

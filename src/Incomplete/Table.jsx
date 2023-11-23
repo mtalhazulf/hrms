@@ -65,13 +65,13 @@ const Table = () => {
             <p key={index} className='text-white text-md font-bold'>{item}</p>
         ))}
       </div>
-      <div className='flex flex-col items-center justify-center w-[95%] space-y-4 '>
+      <div className='flex flex-col items-start justify-start w-[95%] space-y-4 '>
         {data.map ((item,index)=>(
             <>
-            <div key={index} className='flex flex-row justify-between  items-center w-full'>
-            <p className='text-white text-md font-bold'>{item.name}</p>
-            <p className='text-cyan-300 text-md font-semibold'>{item.deadline}</p>
-            <p className='text-white text-md font-bold'>{item.teamLead}</p>
+            <div key={index} className='flex flex-row justify-between items-center w-full'>
+            <p className='text-white text-md font-bold w-16 ml-2'>{item.name}</p>
+            <p className='text-cyan-300 text-md font-semibold w-20 ml-20'>{item.deadline}</p>
+            <p className='text-white text-md font-bold ml-10  w-16'>{item.teamLead}</p>
             <button  className='bg-red-400 rounded p-2 text-white text-sm '>Mark as done</button>
             </div>
             <div className="w-full h-[0px] border border-white border-opacity-10"></div>
