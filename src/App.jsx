@@ -1,7 +1,6 @@
 
 import React from "react";
 import Landing from "./Components/Landing";
-import Sidebar from "./Components/Sidebar";
 import Login from "./Auth/Login";
 import Signup from "./Auth/Signup";
 import About from "./About/About";
@@ -21,7 +20,6 @@ const App = () => {
             <Route index element={Landing()} />
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<Signup />} />
-            <Route path="sidebar" element={<Sidebar />} />
             <Route path="team" element={<About />} />
             <Route path="admin" element={<Overview />} />
             <Route path="proj" element={<Projects />} />

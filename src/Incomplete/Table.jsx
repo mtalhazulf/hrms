@@ -1,6 +1,5 @@
 import React from "react";
-import Modal from "./Modal";
-
+import Modal from "../Components/Shared/Modal";
 const Table = () => {
   const heading = ["Project Name", "Deadline", "Team Lead", "Status"];
 
@@ -61,7 +60,7 @@ const Table = () => {
               <p className="text-white text-md font-bold md:ml-10  w-16">
                 {item.teamLead}
               </p>
-              <button className="bg-red-400 rounded p-2 text-white text-sm ">
+              <button className="bg-red-400 rounded-lg p-2 px-4 text-white text-sm ">
                 Mark as done
               </button>
             </div>
@@ -69,7 +68,7 @@ const Table = () => {
           </>
         ))}
       </div>
-      <Modal />
+      <Modal inputOne={"Project"} inputTwo={"Deadline"} inputThree={"Team-Lead"} />
     </div>
   );
 };

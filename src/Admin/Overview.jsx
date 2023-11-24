@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Siderbar from "../Components/Sidebar";
+import Sidebar from "../Components/Shared/Sidebar";
 import Progress from "./Progress";
 import NewProgress from "./NewProgress";
 import List from "./List";
-import Heading from "../Components/Heading";
+import Heading from "../Components/Shared/Heading";
 
 const Overview = () => {
 
@@ -15,7 +15,7 @@ const Overview = () => {
   return (
     <>
      <div className="flex lg:flex-row flex-col lg:justify-between w-full">
-       <Siderbar />
+       <Sidebar />
 
         <div className="flex flex-col lg:w-[86%] w-full min-h-screen items-center justify-center space-y-8 bg-[#13111A] relative overflow-y-auto">
           

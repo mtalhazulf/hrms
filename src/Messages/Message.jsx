@@ -1,5 +1,5 @@
 import React from "react";
-import Siderbar from "../Components/Sidebar";
+import Siderbar from "../Components/Shared/Sidebar";
 import Interface from "./Interface";
 import { useState } from "react";
 
