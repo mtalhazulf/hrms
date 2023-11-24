@@ -34,12 +34,10 @@ const List = () => {
             status:"Completed"
 
         }
-
-
     ]
   return (
     <>
-    <div className="lg:flex flex-col items-center justify-center space-y-4 w-[650px] h-[280px] bg-indigo-950 rounded-xl  hidden " >
+    <div className="md:flex flex-col items-center justify-center space-y-4 lg:w-[650px] w-[720px] lg:h-[280px] h-[320px] bg-indigo-950 rounded-xl  hidden " >
         <p className='text-white text-xl font-bold '>Priority List</p>
        <div className='flex flex-row items-center justify-between w-[95%] rounded bg-[#56429C] h-10 px-2'>
         {heading.map ((item,index)=>(
@@ -55,17 +53,12 @@ const List = () => {
             <p className='text-white text-md font-bold w-16 ml-8'>{item.teamLead}</p>
             <p  className='text-[#41F1B6] text-md font-bold'>{item.status}</p>
             </div>
-            <div className="w-full h-[0px] border border-white border-opacity-10"></div>
-         
+            <div className="w-full h-[0px] border border-white border-opacity-10"></div> 
             </>
         ))}
       </div>
-
-
-
     </div>
-    </>
-        
+    </>       
   )
 }
 

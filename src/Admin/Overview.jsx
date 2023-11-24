@@ -4,6 +4,7 @@ import Progress from "./Progress";
 import NewProgress from "./NewProgress";
 import List from "./List";
 import Heading from "../Components/Shared/Heading";
+import MobileView from "./MobileView";
 
 const Overview = () => {
 
@@ -26,6 +27,10 @@ const Overview = () => {
            
           </div>
           <List />
+
+          <div className="pb-5 flex items-center justify-center w-full">
+          <MobileView />
+          </div>
         </div>
 
       </div>
