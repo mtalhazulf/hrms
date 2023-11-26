@@ -9,6 +9,7 @@ import Projects from "./Projects/Projects";
 import Project from "./Incomplete/Projects";
 import Teams from "./Teams/Teams";
 import Messages from "./Messages/Message";
+import Members from "./Member/";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
@@ -26,7 +27,8 @@ const App = () => {
             <Route path="incomplete" element={<Project />} />
             <Route path="teams" element={<Teams />} />
             <Route path="msg" element={<Messages />} />
-         
+            <Route path="member" element={<Members />} />
+            <Route path="*" element={<h1>Not Found</h1>} />
           </Route>
         </Routes>
       </BrowserRouter>
