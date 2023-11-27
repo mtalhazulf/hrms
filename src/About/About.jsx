@@ -1,6 +1,4 @@
 import React from "react";
-import { FaLinkedin } from "react-icons/fa";
-import { CgWebsite } from "react-icons/cg";
 import Sidebar from "../Components/Shared/Sidebar";
 
 const About = () => {
