@@ -1,4 +1,3 @@
-
 import React from "react";
 import Landing from "./Components/Landing";
 import Login from "./Auth/Login";
@@ -21,7 +20,7 @@ const App = () => {
             <Route index element={Landing()} />
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<Signup />} />
-            <Route path="team" element={<About />} />
+            <Route path="about" element={<About />} />
             <Route path="admin" element={<Overview />} />
             <Route path="proj" element={<Projects />} />
             <Route path="incomplete" element={<Project />} />

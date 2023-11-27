@@ -7,6 +7,7 @@ import { AiOutlineMessage } from "react-icons/ai";
 import { PiWaveformFill } from "react-icons/pi";
 import { AiOutlineMenu } from "react-icons/ai";
 import { AiOutlineClose } from "react-icons/ai";
+import { RiTeamFill } from "react-icons/ri";
 
 const Sidebar = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -24,6 +25,7 @@ const Sidebar = () => {
   const newB = [
     { name: "All projects", icon: <PiWaveformFill />, href: "/proj" },
     { name: "Messages", icon: <AiOutlineMessage />, href: "/msg" },
+    { name: "About", icon: <RiTeamFill />, href: "/about"},
     { name: "Logout", icon: <CiLogout />, href: "/signup" },
   ];
   return (
