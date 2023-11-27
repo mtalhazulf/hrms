@@ -8,6 +8,7 @@ import Teams from "../Teams/Teams";
 import Messages from "../Messages/Message";
 import Members from "../Member/";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Sidebar from "../Components/Shared/Sidebar";
 
 const AuthenticatedRoutes = () => {
 
@@ -15,23 +16,24 @@ const AuthenticatedRoutes = () => {
 
     return (
         <>
-            {
-                auth ?
-                    <BrowserRouter>
-                        <Routes>
-                            <Route path="/">
-                                <Route path="team" element={<About />} />
-                                <Route path="admin" element={<Overview />} />
-                                <Route path="proj" element={<Projects />} />
-                                <Route path="incomplete" element={<Project />} />
-                                <Route path="teams" element={<Teams />} />
-                                <Route path="msg" element={<Messages />} />
-                                <Route path="member" element={<Members />} />
-                            </Route>
-                        </Routes>
-                    </BrowserRouter> : <h1>Not Authenticated</h1>
-            }
-
+            <div className="flex lg:flex-row flex-col lg:justify-between w-full">
+                <Sidebar />
+                {
+                    auth ?
+                        <BrowserRouter>
+                            <Routes>
+                                <Route path="/">
+                                    <Route path="admin" element={<Overview />} />
+                                    <Route path="proj" element={<Projects />} />
+                                    <Route path="incomplete" element={<Project />} />
+                                    <Route path="teams" element={<Teams />} />
+                                    <Route path="msg" element={<Messages />} />
+                                    <Route path="member" element={<Members />} />
+                                </Route>
+                            </Routes>
+                        </BrowserRouter> : <h1>Not Authenticated</h1>
+                }
+            </div>
         </>
     );
 };
