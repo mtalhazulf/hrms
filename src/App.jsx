@@ -2,32 +2,21 @@ import React from "react";
 import Landing from "./Components/Landing";
 import Login from "./Auth/Login";
 import Signup from "./Auth/Signup";
-import About from "./About/About";
-import Overview from "./Admin/Overview";
-import Projects from "./Projects/Projects";
-import Project from "./Incomplete/Projects";
-import Teams from "./Teams/Teams";
-import Messages from "./Messages/Message";
-import Members from "./Member/";
+import AuthenticatedRoutes from "./Authenticated/authenticated";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ImOpera } from "react-icons/im";
 
 const App = () => {
   return (
     <>
+    <AuthenticatedRoutes />
       <BrowserRouter>
         <Routes>
           <Route path="/">
-            <Route index element={Landing()} />
-            <Route path="login" element={<Login />} />
-            <Route path="signup" element={<Signup />} />
-            <Route path="about" element={<About />} />
-            <Route path="admin" element={<Overview />} />
-            <Route path="proj" element={<Projects />} />
-            <Route path="incomplete" element={<Project />} />
-            <Route path="teams" element={<Teams />} />
-            <Route path="msg" element={<Messages />} />
-            <Route path="member" element={<Members />} />
-            <Route path="*" element={<h1>Not Found</h1>} />
+            <Route exact index path="/" element={Landing()} />
+            <Route exact path="login" element={<Login />} />
+            <Route exact path="signup" element={<Signup />} />
+            {/* <Route exact path="*" element={<h1>Not Found</h1>} /> */}
           </Route>
         </Routes>
       </BrowserRouter>
