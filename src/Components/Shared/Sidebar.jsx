@@ -18,10 +18,10 @@ const Sidebar = () => {
   const buttons = [
     { name: "Dashboard", icon: <AiOutlineAppstore />, href: "/admin" },
     { name: "Members", icon: <GoPerson />, href: "/member" },
-    { name: "Events", icon: <BsFillCalendarDateFill />, href: "/incomplete" },
+    { name: "Events", icon: <BsFillCalendarDateFill />, href: "/events" },
     { name: "Messages", icon: <AiOutlineMessage />, href: "/msg" },
     { name: "Team", icon: <AiOutlineTeam />, href: "/teams" },
-    { name: "Projects", icon: <AiFillPieChart />, href: "/incomplete" },
+    { name: "Projects", icon: <AiFillPieChart />, href: "/proj" },
   ];
 
   return (
