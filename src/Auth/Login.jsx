@@ -54,45 +54,36 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center bg-[#13111A] w-full min-h-screen ">
-      <div className="flex flex-col items-center justify-center gap-4 bg-indigo-950 rounded-[28px] lg:w-[27%] md:w-[70%] w-[90%] h-[600px] relative">
-        <div className="flex flex-col absolute top-2 right-2 p-4">
-          <p className="text-white text-[13px] font-normal ">No Account ?</p>
-          <p
-          onClick={() => window.location.href = "/signup"}
-           className="text-red-400 text-[13px] font-normal cursor-pointer">Sign up</p>
-        </div>
-        <p className="text-white text-5xl font-bold absolute left-2 top-10 p-8">
-          Sign In
+    <div className="flex flex-col items-center justify-center bg-[#181D23] w-full min-h-screen ">
+      <div className="flex flex-col items-center justify-center gap-4 bg-gradient-to-r from-[#445A6B] to-[#414762] lg:w-[27%] md:w-[70%] w-[90%] h-[600px] relative">
+      <p className="text-white text-5xl font-bold">
+          Login
         </p>
 
         <div className="flex flex-col w-full items-center justify-center mt-20">
 
-        <div className="w-[298px] h-[55px] flex items-center justify-center bg-gray-800 rounded-[9px] gap-6 mt-6">
-          <FcGoogle className=" text-2xl" />
-          <p className="text-white">Sign in with Google</p>
-        </div>
-
+       
         <div className="flex flex-col items-start p-4 w-[90%] gap-4">
           <p className="text-white lg:text-lg text-sm">
-            Enter your username or email address
+            Email address
           </p>
           <input
             type="email"
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Username or Email Address"
+          
             required
-            className="w-full py-3 px-4 bg-indigo-900 rounded-[9px] focus:outline-none text-zinc-500"
+            className="w-full px-4 py-1 bg-transparent focus:outline-none text-zinc-500 focus:bg-transparent"
           ></input>
+        
 
-          <p className="text-white lg:text-lg text-sm">Enter your Password</p>
-          <div className="flex justify-between w-full py-3 bg-indigo-900 rounded-[9px]">
+          <p className="text-white lg:text-lg text-sm">Password</p>
+          <div className="flex justify-between w-full py-3">
             <input
               type={showPassword ? "text" : "password"}
-              className="bg-transparent focus:outline-none text-zinc-500 focus:bg-transparent w-full outline-none px-4"
-              placeholder="Password"
+              className="bg-transparent py-1  focus:outline-none text-zinc-500 focus:bg-transparent w-full outline-none px-4"
+            
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -114,14 +105,14 @@ const Login = () => {
 
           </div>
 
-          <div className="flex justify-end w-full">
+          <div className="flex justify-start w-full">
            <p className="text-white text-lg">Forgot Password</p>
           </div>
         </div>
 
         <button
         onClick={forward}
-        className="bg-red-400 rounded-[9px] text-white mt-2 p-4 w-[28%] hover:font-bold hover:bg-red-800"> Signin</button>
+        className="bg-gradient-to-r from-[#334454] to-[#363C56] text-white mt-6 p-2 w-[80%] hover:font-bold ">Login</button>
 
         </div>
       </div>
