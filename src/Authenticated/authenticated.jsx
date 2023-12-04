@@ -12,7 +12,7 @@ import Sidebar from "../Components/Shared/Sidebar";
 
 const AuthenticatedRoutes = () => {
 
-    const [auth, setAuth] = React.useState(false);
+    const [auth, setAuth] = React.useState(true);
 
     return (
         <>
