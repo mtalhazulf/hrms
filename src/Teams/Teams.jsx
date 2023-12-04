@@ -1,5 +1,4 @@
 import React from "react";
-import Sidebar from "../Components/Shared/Sidebar";
 import Template from "./Template";
 
 const Teams = () => {

@@ -1,6 +1,5 @@
 import React from "react";
 import Heading from "../Components/Shared/Heading";
-import Siderbar from "../Components/Shared/Sidebar";
 import Table from "./Table";
 
 
