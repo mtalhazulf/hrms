@@ -27,10 +27,10 @@ const Details = () => {
             <div className="flex flex-row items-center justify-center w-full gap-4">
             <div className="bg-[#3E4651] flex flex-row items-center justify-between text-white text-xl rounded-xl px-6 py-2 md:w-[911px] h-[120px]">
               <p>{item.name}</p>
-              <div className="w-0 h-[50px] border border-white border-opacity-10"></div>
-              <p>{item.date}</p>
-              <div className="w-0 h-[50px] border border-white border-opacity-10"></div>
-              <p>{item.details}</p>
+              <div className="w-0 h-[50px] border border-white border-opacity-10 md:block hidden"></div>
+              <p className="md:block hidden">{item.date}</p>
+              <div className="w-0 h-[50px] border border-white border-opacity-10 md:block hidden"></div>
+              <p className="md:block hidden">{item.details}</p>
             </div>
 
             
