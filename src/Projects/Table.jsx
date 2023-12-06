@@ -17,9 +17,10 @@ const Table = () => {
 
   return (
     <div className="flex flex-col items-center justify-center w-[95%] space-y-4">
-      {data.map((item, index) => (
-        <div key={index} className="md:w-[911px] bg-[#3E4651] rounded-xl overflow-hidden">
-          <div className="flex flex-row items-center justify-between gap-2 text-white text-xl px-6 py-2 w-full">
+      <div className="md:w-[911px] bg-[#3E4651] rounded-xl overflow-hidden">
+        {data.map((item, index) => (
+            <div key={index} className="flex flex-col items-center justify-center w-full py-2">
+          <div  className="flex flex-row items-center justify-between gap-2 text-white text-xl px-6 py-2 w-full">
             <p>{item.serialnumber}</p>
             <p>{item.milestone}</p>
             <p className="md:block hidden">{item.deadline}</p>
@@ -28,8 +29,10 @@ const Table = () => {
             </button>
           </div>
           <div className="w-full h-[1px] bg-white opacity-10"></div>
-        </div>
-      ))}
+     
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
