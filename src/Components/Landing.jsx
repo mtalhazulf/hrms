@@ -6,9 +6,9 @@ const Landing = () => {
 
       <img src="des.png" alt="logo" className="w-[38%] h-auto absolute top-0 right-0"/>
 
-      <div className="pl-10 ml-10 flex flex-col items-start justify-start mt-10 gap-8">
+      <div className="lg:pl-10 ml-10 flex flex-col lg:items-start items-center lg:justify-start justify-center lg:mt-10 gap-8">
       <h1 className="text-4xl text-white font-bold">Welcome to HR Management System</h1>
-      <p className=" text-white lg:w-[50%] w-[90%] ">
+      <p className=" text-white lg:w-[50%] w-full">
         Welcome to Ops Tracking, your comprehensive Human Resource Management
         System designed to streamline and elevate your organizational
         operations. At Ops Tracking, we understand that the key to success lies
@@ -23,7 +23,7 @@ const Landing = () => {
         ensuring a harmonious workplace environment. Join us on this journey to
         revolutionize HR management and unlock the full potential of your team.
       </p>
-      <button  onClick={() => (window.location.href = '/login')} className="bg-gradient-to-r from-[#334454] to-[#363C56] w-[379px] h-[51px] text-white font-semibold rounded-[4px]">Prceed to Login ↪ </button>
+      <button  onClick={() => (window.location.href = '/login')} className="bg-gradient-to-r from-[#334454] to-[#363C56] md:w-[379px] w-1/2 p-2 h-[51px] text-white font-semibold rounded-[4px]">Prceed to Login ↪ </button>
            </div>
       
      </div>
