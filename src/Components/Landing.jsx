@@ -2,9 +2,13 @@ import React from "react";
 
 const Landing = () => {
   return (
-    <div className="bg-[#13111A] flex flex-col items-center justify-center min-h-screen w-full gap-8">
-      <h1 className="text-4xl text-white font-bold">Op's Tracking</h1>
-      <p className="text-center text-white lg:w-[50%] w-[90%] ">
+    <div className="bg-[#181D23] flex flex-col items-center justify-center min-h-screen w-full gap-8 relative">
+
+      <img src="des.png" alt="logo" className="w-[38%] h-auto absolute top-0 right-0"/>
+
+      <div className="pl-10 ml-10 flex flex-col items-start justify-start mt-10 gap-8">
+      <h1 className="text-4xl text-white font-bold">Welcome to HR Management System</h1>
+      <p className=" text-white lg:w-[50%] w-[90%] ">
         Welcome to Ops Tracking, your comprehensive Human Resource Management
         System designed to streamline and elevate your organizational
         operations. At Ops Tracking, we understand that the key to success lies
@@ -19,12 +23,10 @@ const Landing = () => {
         ensuring a harmonious workplace environment. Join us on this journey to
         revolutionize HR management and unlock the full potential of your team.
       </p>
-      <div className="flex md:flex-row flex-col md:justify-between justify-center items-center md:w-[20%] w-full mt-4 md:space-y-0 space-y-6">
-        <button  onClick={() => (window.location.href = '/login')} className="bg-[#FF7B60] hover:bg-orange-600 md:px-6 px-8 py-2 text-white font-semibold rounded-lg">Sign in</button>
-        <button  onClick={() => (window.location.href = '/signup')} className="bg-[#FF7B60] hover:bg-orange-600 md:px-6 px-8 py-2 text-white font-semibold rounded-lg">Sign up</button>
-
-      </div>
-    </div>
+      <button  onClick={() => (window.location.href = '/login')} className="bg-gradient-to-r from-[#334454] to-[#363C56] w-[379px] h-[51px] text-white font-semibold rounded-[4px]">Prceed to Login ↪ </button>
+           </div>
+      
+     </div>
   );
 };
 
