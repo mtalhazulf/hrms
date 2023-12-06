@@ -1,71 +1,80 @@
 import React from "react";
-import Modal from "../Components/Shared/Modal";
+import { CiEdit } from "react-icons/ci";
+import { AiOutlineDelete } from "react-icons/ai";
 
 const Template = () => {
   const data = [
     {
       name: "Asim",
-      teamLead: "Saleemi",
-      members1: "Hassan",
-      members2: "Piri",
-      members3: "Raza",
+      date: "Sunday - 2:30 PM",
+      teamlead: "Talha",
+      frontend: ["Hassan Ali", "John Doe"],
+      backend: ["Piri Abadulrehman", "Jane Smith"],
     },
     {
-      name: "Maxime",
-      teamLead: "Talha",
-      members1: "Hassan",
-      members2: "Talha",
-      members3: "Ahmed",
+      name: "Asim",
+      date: "Sunday - 2:30 PM",
+      teamlead: "Talha",
+      frontend: ["Hassan Ali", "John Doe"],
+      backend: ["Piri Abadulrehman", "Jane Smith"],
     },
   ];
-
   return (
-    <div className="flex flex-col items-center justify-center space-y-4 lg:w-[950px] md:w-[750px] w-[400px] h-[600px] bg-[#282346] rounded-xl overflow-y-auto relative">
-      {data.map((data, index) => (
-        <div
-          key={index}
-          className=" flex flex-col items-center justify-center lg:w-[810px] md:w-[650px] w-[350px] h-[163px] bg-[#56429C] rounded-[15px] "
-        >
-          <div className="flex md:flex-row flex-col md:justify-between  items-center px-2 w-full">
-            <h1 className="text-white pl-6">{data.name}</h1>
-            <div className="flex flex-col items-start justify-center space-y-4">
-              <div className="flex w-full justify-between">
-                <div className="flex md:space-x-4">
-                  <h1 className="text-lg text-cyan-300 mr-9">Team Lead:</h1>
-                  <div className=" flex items-center justify-center w-[82px] h-10 bg-slate-800 bg-opacity-30 rounded-lg text-white ">
-                    {data.teamLead}
-                  </div>
-                </div>
-                <button className="rounded-xl bg-red-400 text-white p-2">
-                  {" "}
-                  Add / Remove
-                </button>
-              </div>
-              <div className="w-[519px] h-[0px] border border-white border-opacity-10"></div>
+    <>
+      <div className="flex flex-wrap gap-4 items-center justify-center md:w-[90%] w-full relative">
+        <div className="md:flex hidden flex-row items-center justify-between md:w-[900px] text-lg font-bold text-white px-6 mr-20">
+          <p>Project Name</p>
+          <p>Team Lead</p>
+          <p>Deadline</p>
+          <p>Frontend Team</p>
+          <p>Backend Team</p>
+       
+          </div>
+        {data.map((item, index) => (
+          <div key={index} className="flex flex-col gap-4 w-full">
+            <div className="flex flex-row items-center justify-center w-full gap-4">
+              <div className="bg-[#3E4651] flex flex-row items-center justify-between gap-2 text-white text-xl rounded-xl px-6 py-2 md:w-[911px] h-[120px]">
+                <p>{item.name}</p>
+                <div className="w-0 h-[50px] border border-white border-opacity-10 "></div>
+                <p >{item.teamlead}</p>
+                <div className="w-0 h-[50px] border border-white border-opacity-10 md:block hidden"></div>
+                <p className="md:block hidden">{item.date}</p>
+                <div className="w-0 h-[50px] border border-white border-opacity-10 md:block hidden"></div>
 
-              <div className="flex w-full justify-between">
-                <div className="flex md:space-x-4">
-                  <h1 className="text-lg text-cyan-300">Team Members:</h1>
-                  <div className="flex flex-row justify-between items-center px-4 w-[187px] h-10 bg-slate-800 bg-opacity-30 rounded-lg text-white">
-                    <p>{data.members1}</p>
-                    <p>{data.members2}</p>
-                    <p>{data.members3}</p>
-                  </div>
+                <div className="md:flex flex-col gap-2  hidden">
+                  {item.frontend.map((member, index) => (
+                    <div key={index} className="flex flex-col gap-2 w-full">
+                      <p className="text-white text-lg">{member}</p>
+                    </div>
+                  ))}
                 </div>
-                <button className="rounded-xl bg-red-400 text-white p-2">
-                  Add / Remove
-                </button>
+                <div className="w-0 h-[50px] border border-white border-opacity-10 md:block hidden"></div>
+
+                <div className="md:flex flex-col gap-2  hidden">
+                  {item.backend.map((member, index) => (
+                    <div key={index} className="flex flex-col gap-2 w-full">
+                      <p className="text-white text-lg">{member}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-2">
+               
+              <button className="inline-flex items-center justify-center rounded-[15.27px] bg-[#3E4651]  font-bold text-2xl text-white w-[50px] h-[50px]">
+                <CiEdit />
+              </button>
+              <button className=" inline-flex items-center justify-center rounded-[15.27px] bg-[#3E4651] font-bold text-2xl text-white w-[50px] h-[50px]">
+                <AiOutlineDelete />
+              </button>
+
               </div>
             </div>
           </div>
-        </div>
-      ))}
-      <Modal
-        inputOne={"Project"}
-        inputTwo={"Team-Lead"}
-        inputThree={"Team-Members"}
-      />
-    </div>
+        ))}
+    
+      </div>
+    </>
   );
 };
 
