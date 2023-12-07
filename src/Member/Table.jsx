@@ -63,7 +63,7 @@ const Table = () => {
                 <p className="text-white text-md font-bold md:ml-10 w-16 md:block hidden">
                   {item.projectsAssigned}
                 </p>
-                <button className="bg-red-400 rounded-lg p-2 px-4 text-white text-sm ">
+                <button className="bg-gradient-to-r from-[#7DC2EF] to-[#928EF4] rounded-lg p-2 px-4 text-white text-sm ">
                   View Details
                 </button>
               </div>
