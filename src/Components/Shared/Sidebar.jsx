@@ -7,6 +7,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsFillCalendarDateFill } from "react-icons/bs";
 import { GoPerson } from "react-icons/go";
+import logo from "../../assets/logo.png";
 
 const Sidebar = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -15,13 +16,16 @@ const Sidebar = () => {
     setSidebarOpen(!isSidebarOpen);
   };
 
+  //Icon Size
+  const icon_size = 25;
+
   const buttons = [
-    { name: "Dashboard", icon: <AiOutlineAppstore />, href: "/admin" },
-    { name: "Members", icon: <GoPerson />, href: "/member" },
-    { name: "Events", icon: <BsFillCalendarDateFill />, href: "/events" },
-    { name: "Messages", icon: <AiOutlineMessage />, href: "/msg" },
-    { name: "Team", icon: <AiOutlineTeam />, href: "/teams" },
-    { name: "Projects", icon: <AiFillPieChart />, href: "/proj" },
+    { name: "Dashboard", icon: <AiOutlineAppstore size={icon_size} />, href: "/admin" },
+    { name: "Members", icon: <GoPerson size={icon_size} />, href: "/member" },
+    { name: "Events", icon: <BsFillCalendarDateFill size={icon_size} />, href: "/events" },
+    { name: "Messages", icon: <AiOutlineMessage size={icon_size} />, href: "/msg" },
+    { name: "Team", icon: <AiOutlineTeam size={icon_size} />, href: "/teams" },
+    { name: "Projects", icon: <AiFillPieChart size={icon_size} />, href: "/proj" },
   ];
 
   return (
@@ -40,42 +44,36 @@ const Sidebar = () => {
         </>
       )}
 
-      <div className="lg:w-[18%] md:block w-0">
-        <aside
-          id="default-sidebar"
-          className={`absolute left-0 z-10 lg:w-52 w-75 h-[100vh] transition-transform ' ${
-            isSidebarOpen ? "translate-x-0 " : "-translate-x-full"
-          } lg:translate-x-0`}
-          aria-label="Sidebar"
-        >
-          <div className="h-full flex flex-col items-center bg-gradient-to-r from-[#445A6B] to-[#414662]">
-            {isSidebarOpen && (
-              <button
-                type="button"
-                className=" lg:hidden block mt-3 p-2 rounded-full bg-neutral-300 text-black focus:outline-none "
-                onClick={toggleSidebar}
-              >
-                <AiOutlineClose size={30} />
-              </button>
-            )}
-            <div className="flex flex-col items-start justify-center mt-10 px-4 space-y-5">
-              {buttons.map((button, index) => (
-                <div key={index}>
-                  <button
-                    onClick={() => (window.location.href = button.href)}
-                    className="transparent-button text-zinc-800 text-md  py-4 w-44 rounded-xl font-semibold hover:bg-[#2E2D42] hover:px-2 transition-transform transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-500"
-                  >
-                    <div className="flex flex-col items-center justify-center w-full text-white">
-                      <p className=" text-2xl"> {button.icon} </p>
-                      <p>{button.name}</p>
-                    </div>
-                  </button>
-                </div>
-              ))}
+      <nav className={`bg-[#434F5F] text-white min-h-screen w-fit transition-all duration-300 ease-in-out ${isSidebarOpen ? "translate-x-0 py-6 " : " py-8 hidden lg:block  "
+        }  `}>
+        {isSidebarOpen && (
+          <center ><button
+            type="button"
+            className=" lg:hidden block mt-3 mb-6 rounded-full bg-neutral-300 text-black focus:outline-none "
+            onClick={toggleSidebar}
+          >
+            <AiOutlineClose size={30} />
+          </button>
+          </center>
+        )}
+        <div className="mb-8">
+          <img src={logo} alt="Logo" className="w-16 h-full m-auto" loading="lazy" />
+        </div>
+        <div role="navigation">
+          {buttons.map((item, i) => (
+            <div
+              key={i}
+              className={`flex p-4 flex-col items-center mb-4 cursor-pointer ${window.location.pathname === item.href ? "bg-[#394653] shadow-inner" : ""
+                }`}
+              onClick={() => window.location.href = item.href}
+              role="link"
+              tabIndex={0}
+            >{item.icon}
+              <div>{item.name}</div>
             </div>
-          </div>
-        </aside>
-      </div>
+          ))}
+        </div>
+      </nav>
     </div>
   );
 };
