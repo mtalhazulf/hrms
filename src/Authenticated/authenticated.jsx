@@ -5,36 +5,63 @@ import Projects from "../Projects/Projects";
 import Teams from "../Teams/Teams";
 import Messages from "../Messages/Message";
 import Members from "../Member/";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Sidebar from "../Components/Shared/Sidebar";
 import Events from "../Events/Events";
 
+export const ProtectedRoute = ({ children, isAuthenticated }) => {
+
+    const [isSidebarOpen, setSidebarOpen] = React.useState(false);
+
+    if (!isAuthenticated) {
+        return <Navigate to="/login" />;
+    }
+    else {
+        return <>
+            <div className="flex  flex-col lg:flex-row lg:justify-between w-screen h-screen min-h-screen max-h-screen">
+                <Sidebar isSidebarOpen={isSidebarOpen} setSidebarOpen={setSidebarOpen}/>
+                {
+                    isSidebarOpen==false ? <>{children}</>:<></>
+                }
+            </div>
+        </>;
+    }
+};
+
+
 const AuthenticatedRoutes = () => {
 
-    const [auth, setAuth] = React.useState(true);
+    const [AuthStatus, setAuthStatus] = React.useState(true);
 
     return (
         <>
-            <div className="flex lg:flex-row flex-col lg:justify-between w-full">
-                <Sidebar />
-                {
-                    auth ?
-                        <BrowserRouter>
-                            <Routes>
-                                <Route path="/">
-                                    <Route path="admin" element={<Overview />} />
-                                    <Route path="member" element={<Members />} />
-                                    <Route path="events" element={<Events />} />
-                
-                                    <Route path="msg" element={<Messages />} />
-                                    <Route path="teams" element={<Teams />} />
-                                    <Route path="proj" element={<Projects />} />
-                                 
-                                    </Route>
-                            </Routes>
-                        </BrowserRouter> : <h1>Not Authenticated</h1>
-                }
-            </div>
+            <Routes>
+                <Route path="/admin" element={
+                    <ProtectedRoute isAuthenticated={AuthStatus} >
+                        <Overview />
+                    </ProtectedRoute>} />
+
+                <Route path="/member" element={<ProtectedRoute isAuthenticated={AuthStatus} >
+                    <Members />
+                </ProtectedRoute>} />
+
+                <Route path="/events" element={<ProtectedRoute isAuthenticated={AuthStatus} >
+                    <Events />
+                </ProtectedRoute>} />
+
+                <Route path="/msg" element={<ProtectedRoute isAuthenticated={AuthStatus} >
+                    <Messages />
+                </ProtectedRoute>} />
+
+                <Route path="/teams" element={<ProtectedRoute isAuthenticated={AuthStatus} >
+                    <Teams />
+                </ProtectedRoute>} />
+
+                <Route path="/proj" element={<ProtectedRoute isAuthenticated={AuthStatus} >
+                    <Projects />
+                </ProtectedRoute>} />
+
+            </Routes>
         </>
     );
 };

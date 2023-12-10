@@ -6,9 +6,10 @@ import AuthenticatedRoutes from "./Authenticated/authenticated";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
+
+
   return (
     <>
-    <AuthenticatedRoutes />
       <BrowserRouter>
         <Routes>
           <Route path="/">
@@ -18,6 +19,7 @@ const App = () => {
             {/* <Route exact path="*" element={<h1>Not Found</h1>} /> */}
           </Route>
         </Routes>
+        <AuthenticatedRoutes />
       </BrowserRouter>
     </>
   );
