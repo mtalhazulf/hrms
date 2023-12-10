@@ -1,11 +1,11 @@
 import React from "react";
-import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { signIn } from "@/Integeration/Function";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("tester@texagon.io");
+  const [password, setPassword] = useState("Test@1234");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setIsLoading] = useState(false);
   const validateEmail = (email) => {
@@ -27,14 +27,11 @@ const Login = () => {
 
     try {
       setIsLoading(true);
-      const { user, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-      if (error) {
-        alert("Sign in failed. Please check your credentials and try again.");
+      const bool = await signIn(email, password);
+      if (bool) {
+        window.location.href = "/admin";
       } else {
-        alert("Sign in successful!");
+        alert("Invalid Credentials");
       }
     } catch (error) {
       console.log("Error:", error.message);
@@ -49,70 +46,81 @@ const Login = () => {
     }, 2000);
   };
 
-  const forward = () => {
-    window.location.href = "/admin";
+  const forward = (e) => {
+    handleSignIn(e);
+    //window.location.href = "/admin";
   };
 
   return (
     <div className="flex flex-col items-center justify-center bg-[#181D23] w-full min-h-screen ">
-      <div className="flex flex-col items-center justify-center gap-4 bg-gradient-to-r from-[#445A6B] to-[#414762] lg:w-[27%] md:w-[70%] w-[90%] h-[600px] relative">
-      <p className="text-white text-5xl font-bold">
+      <div className="flex flex-col items-center justify-center gap-4 bg-gradient-to-r from-[#445A6B] to-[#414762] lg:w-[27%] md:w-[70%] w-[90%] h-[600px] relative rounded-xl">
+        <p className="text-white text-5xl font-bold">
           Login
         </p>
 
         <div className="flex flex-col w-full items-center justify-center mt-20">
-
-       
-        <div className="flex flex-col items-start p-4 w-[90%] gap-4">
-          <p className="text-white lg:text-lg text-sm">
-            Email address
-          </p>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          
-            required
-            className="w-full px-4 py-1 bg-transparent focus:outline-none text-zinc-500 focus:bg-transparent"
-          ></input>
-        
-
-          <p className="text-white lg:text-lg text-sm">Password</p>
-          <div className="flex justify-between w-full py-3">
+          <div className="flex flex-col items-start p-4 w-[90%] gap-4">
+            <p className="text-white lg:text-lg text-sm">
+              Email address
+            </p>
             <input
-              type={showPassword ? "text" : "password"}
-              className="bg-transparent py-1  focus:outline-none text-zinc-500 focus:bg-transparent w-full outline-none px-4"
-            
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full p-4 py-1 bg-transparent focus:outline-none text-white   rounded-lg border-2 border-white  "
               required
-            />
+            ></input>
 
-            <div className=" pr-4 ">
-              {showPassword ? (
-                <AiOutlineEyeInvisible
-                  className="w-6 h-6 text-zinc-500 cursor-pointer"
-                  onClick={() => setShowPassword(!showPassword)}
-                />
-              ) : (
-                <AiOutlineEye
-                  className="w-6 h-6 text-zinc-500 cursor-pointer "
-                  onClick={() => setShowPassword(!showPassword)}
-                />
-              )}
+
+            <p className="text-white lg:text-lg text-sm">Password</p>
+            <div className="flex justify-between w-full py-3">
+              <input
+                type={showPassword ? "text" : "password"}
+                className="bg-transparent py-1  focus:outline-none text-white  focus:bg-transparent w-full outline-none px-4 rounded-lg border-2 border-white "
+
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+
+              <div className=" py-1 ">
+                {showPassword ? (
+                  <AiOutlineEyeInvisible
+                    className="w-6 h-6 text-white cursor-pointer "
+                    onClick={() => setShowPassword(!showPassword)}
+                  />
+                ) : (
+                  <AiOutlineEye
+                    className="w-6 h-6 text-white cursor-pointer "
+                    onClick={() => setShowPassword(!showPassword)}
+                  />
+                )}
+              </div>
+
             </div>
 
+            <div className="flex justify-end w-full">
+              <p className="text-white text-lg">Forgot Password?</p>
+            </div>
           </div>
 
-          <div className="flex justify-start w-full">
-           <p className="text-white text-lg">Forgot Password</p>
-          </div>
-        </div>
-
-        <button
-        onClick={forward}
-        className="bg-gradient-to-r from-[#334454] to-[#363C56] text-white mt-6 p-2 w-[80%] hover:font-bold ">Login</button>
+          <button
+            onClick={forward}
+            disabled={loading}
+            className="bg-gradient-to-r from-[#334454] to-[#363C56] text-white mt-6 p-2 w-[50%] hover:font-bold rounded-xl ">
+              
+              {
+                loading ? (
+                  <div className="flex items-center justify-center gap-2">
+                    <div className="w-4 h-4 rounded-full bg-white animate-bounce"></div>
+                    <p className="text-white">Loading...</p>
+                  </div>
+                ) : (
+                  <p className="text-white">Login</p>
+                )
+              }
+            </button>
 
         </div>
       </div>
