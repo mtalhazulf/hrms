@@ -1,4 +1,6 @@
 import supabase from "./supabase"
+import auth_config,{setUserLogin} from "@/Redux-Store/Features/Auth-Slice"
+import {useDispatch} from "react-redux"
 
 export const signIn = async (email,password) => {
     const {data,error} = await supabase.auth.signInWithPassword({
@@ -8,7 +10,7 @@ export const signIn = async (email,password) => {
     if (error) {
         console.log(error)
     } else {
-        console.log(data);
+        useDispatch(setUserLogin(data));
         return true;
     }
     return false;
