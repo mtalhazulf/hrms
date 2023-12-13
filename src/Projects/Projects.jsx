@@ -5,9 +5,8 @@ import Table from "./Table";
 
 const Projects = () => {
 
-
   return (
-    <div className="flex flex-col w-full min-h-screen items-center justify-center space-y-8 bg-[#181D23] relative overflow-y-auto">
+    <div className="flex flex-col w-full min-h-screen space-y-8 bg-[#181D23] relative overflow-y-auto">
       <Heading />
       <Table />
     </div>

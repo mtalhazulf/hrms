@@ -10,6 +10,7 @@ export const MemberSlice = createSlice({
     reducers: {
         SetMembers: (state, action) => {
             state.ListOfMembers = action.payload;
+            console.log(state.ListOfMembers);
         },
     },
 });

@@ -1,78 +1,65 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CiEdit } from "react-icons/ci";
 import { AiOutlineDelete } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 const Template = () => {
-  const data = [
-    {
-      name: "Asim",
-      date: "Sunday - 2:30 PM",
-      teamlead: "Talha",
-      frontend: ["Hassan Ali", "John Doe"],
-      backend: ["Piri Abadulrehman", "Jane Smith"],
-    },
-    {
-      name: "Asim",
-      date: "Sunday - 2:30 PM",
-      teamlead: "Talha",
-      frontend: ["Hassan Ali", "John Doe"],
-      backend: ["Piri Abadulrehman", "Jane Smith"],
-    },
-  ];
+
+  const navigate = useNavigate();
+  const heading = ["Project Name", "Team Lead", "Deadline", "Milestone", "Description"];
+
+  const [Project, setProject] = React.useState([]);
+  const [loading, setLoading] = React.useState(false);
+
+  useEffect(() => {
+    async function getProjectsfromSupabase() {
+      setLoading(true);
+
+      setProject(await getProjects());
+
+      setLoading(false);
+      console.log(members);
+    }
+
+    getProjectsfromSupabase();
+  }, []);
+
   return (
     <>
-      <div className="flex flex-wrap gap-4 items-center justify-center md:w-[90%] w-full relative">
-        <div className="md:flex hidden flex-row items-center justify-between md:w-[900px] text-lg font-bold text-white px-6 mr-20">
-          <p>Project Name</p>
-          <p>Team Lead</p>
-          <p>Deadline</p>
-          <p>Frontend Team</p>
-          <p>Backend Team</p>
-       
-          </div>
-        {data.map((item, index) => (
-          <div key={index} className="flex flex-col gap-4 w-full">
-            <div className="flex flex-row items-center justify-center w-full gap-4">
-              <div className="bg-[#3E4651] flex flex-row items-center justify-between gap-2 text-white text-xl rounded-xl px-6 py-2 md:w-[911px] h-[120px]">
-                <p>{item.name}</p>
-                <div className="w-0 h-[50px] border border-white border-opacity-10 "></div>
-                <p >{item.teamlead}</p>
-                <div className="w-0 h-[50px] border border-white border-opacity-10 md:block hidden"></div>
-                <p className="md:block hidden">{item.date}</p>
-                <div className="w-0 h-[50px] border border-white border-opacity-10 md:block hidden"></div>
-
-                <div className="md:flex flex-col gap-2  hidden">
-                  {item.frontend.map((member, index) => (
-                    <div key={index} className="flex flex-col gap-2 w-full">
-                      <p className="text-white text-lg">{member}</p>
-                    </div>
-                  ))}
-                </div>
-                <div className="w-0 h-[50px] border border-white border-opacity-10 md:block hidden"></div>
-
-                <div className="md:flex flex-col gap-2  hidden">
-                  {item.backend.map((member, index) => (
-                    <div key={index} className="flex flex-col gap-2 w-full">
-                      <p className="text-white text-lg">{member}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-2">
-               
-              <button className="inline-flex items-center justify-center rounded-[15.27px] bg-[#3E4651]  font-bold text-2xl text-white w-[50px] h-[50px]">
-                <CiEdit />
-              </button>
-              <button className=" inline-flex items-center justify-center rounded-[15.27px] bg-[#3E4651] font-bold text-2xl text-white w-[50px] h-[50px]">
-                <AiOutlineDelete />
-              </button>
-
-              </div>
-            </div>
-          </div>
-        ))}
-    
+      <div className="overflow-x-auto w-full p-20">
+        <div className="flex w-full justify-end ">
+          <button className="bg-gradient-to-r from-[#7DC2EF] to-[#928EF4] rounded-lg p-2 px-4 text-sm m-4" onClick={(e) => {
+            e.preventDefault();
+            navigate('/add_member');
+          }}>
+            Add Team
+          </button>
+        </div>
+        <table className="min-w-full w-full bg-[#323A4494] text-white rounded-xl text-center">
+          <thead className="w-full ">
+            <tr>
+              {heading.map((item, index) => (
+                  <th key={index} className="px-4 py-2 text-md font-bold">
+                    {item}
+                  </th>
+                ))}
+            </tr>
+          </thead>
+          <tbody>
+            {/* {data?.map((item, index) => (
+                <tr key={index} className="border-b border-white border-opacity-10 w-full">
+                  <td className="px-4 py-2 font-bold">{item.name}</td>
+                  <td className="px-4 py-2 font-semibold">{item.email}</td>
+                  <td className="px-4 py-2 font-bold">{item.assigned_projects.length}</td>
+                  <td className="px-4 py-2">
+                    <button className="bg-gradient-to-r from-[#7DC2EF] to-[#928EF4] rounded-lg p-2 px-4 text-sm">
+                      View Details
+                    </button>
+                  </td>
+                </tr>
+              ))} */}
+          </tbody>
+        </table>
       </div>
     </>
   );

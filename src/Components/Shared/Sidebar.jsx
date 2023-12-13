@@ -7,9 +7,11 @@ import { AiOutlineClose } from "react-icons/ai";
 import { BsFillCalendarDateFill } from "react-icons/bs";
 import { GoPerson } from "react-icons/go";
 import logo from "../../assets/logo.png";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = ({isSidebarOpen,setSidebarOpen}) => {
 
+  const navigate = useNavigate();
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
   };
@@ -20,10 +22,11 @@ const Sidebar = ({isSidebarOpen,setSidebarOpen}) => {
   const buttons = [
     { name: "Dashboard", icon: <AiOutlineAppstore size={icon_size} />, href: "/admin" },
     { name: "Members", icon: <GoPerson size={icon_size} />, href: "/member" },
-    { name: "Events", icon: <BsFillCalendarDateFill size={icon_size} />, href: "/events" },
-    { name: "Messages", icon: <AiOutlineMessage size={icon_size} />, href: "/msg" },
     { name: "Team", icon: <AiOutlineTeam size={icon_size} />, href: "/teams" },
     { name: "Projects", icon: <AiFillPieChart size={icon_size} />, href: "/proj" },
+    { name: "Events", icon: <BsFillCalendarDateFill size={icon_size} />, href: "/events" },
+    { name: "Messages", icon: <AiOutlineMessage size={icon_size} />, href: "/msg" },
+    { name: "Logout", icon: <AiOutlineClose size={icon_size} />, href: "/logout" },
   ];
 
   return (<>
@@ -62,7 +65,7 @@ const Sidebar = ({isSidebarOpen,setSidebarOpen}) => {
             key={i}
             className={`flex p-4 flex-col items-center mb-4 cursor-pointer ${window.location.pathname === item.href ? "bg-[#394653] shadow-inner" : ""
               }`}
-            onClick={() => window.location.href = item.href}
+            onClick={() => {navigate(item.href)}}
             role="link"
             tabIndex={0}
           >{item.icon}

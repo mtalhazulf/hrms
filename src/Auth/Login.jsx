@@ -1,13 +1,16 @@
 import React from "react";
 import { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { signIn } from "@/Integeration/Function";
+import { signInUser } from "../Integeration/Function";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const [email, setEmail] = useState("tester@texagon.io");
   const [password, setPassword] = useState("Test@1234");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
+
   const validateEmail = (email) => {
     const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     return regex.test(email);
@@ -27,8 +30,7 @@ const Login = () => {
 
     try {
       setIsLoading(true);
-      const bool = await signIn(email, password);
-      if (bool) {
+      if (await signInUser(email, password, dispatch)) {
         window.location.href = "/admin";
       } else {
         alert("Invalid Credentials");
