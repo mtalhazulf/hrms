@@ -59,7 +59,7 @@ const Boxes = () => {
         {data.map((item, index) => (
           <div
             key={index}
-            className="flex flex-col items-start justify-start  bg-gradient-to-r from-[#7BC5EE] to-[#928DF4] rounded-[29px] gap-6 py-2 px-4 w-48 h-40"
+            className="flex flex-col items-start justify-start  bg-gradient-to-r from-[#7BC5EE] to-[#928DF4] rounded-[29px] gap-6 py-2 px-4 w-52 h-40"
           >
             <div className="flex gap-2 items-center justify-center text-md pt-3 text-white">
               <p >{item.title}</p>
