@@ -4,8 +4,9 @@ import { TiTick } from "react-icons/ti";
 import { FaArrowTrendDown } from "react-icons/fa6";
 import { FaArrowTrendUp } from "react-icons/fa6";
 
+
 const Boxes = () => {
-    const [valuesFromBackend, setValuesFromBackend] = useState([]);
+    const [valuesFromBackend, setValuesFromBackend] = React.useState([]);
 
 
 /*
