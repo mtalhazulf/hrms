@@ -55,7 +55,7 @@ const Boxes = () => {
 
   return (
     <>
-      <div className="flex flex-wrap w-full items-center justify-center px-10 gap-16">
+      <div className="flex flex-wrap w-full items-center justify-center px-10 md:gap-16 gap-4 overflow-y-auto">
         {data.map((item, index) => (
           <div
             key={index}

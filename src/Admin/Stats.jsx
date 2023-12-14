@@ -4,7 +4,7 @@ import Calendarr from './Calendar'
 
 const Stats = () => {
   return (
-    <div className="flex md:flex-row flex-col w-full items-center justify-center px-10 gap-4">
+    <div className="flex flex-wrap w-full items-center justify-center px-10 gap-4 overflow-y-auto">
         <Table />
         <Calendarr />
         
