@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+.calendar-container {
+    background-color: transparent !important;
+  }
+  
+  .selected-date {
+    background-color: #56429C; 
+    color: white;
+    border-radius: 100%;
+  }
+  
