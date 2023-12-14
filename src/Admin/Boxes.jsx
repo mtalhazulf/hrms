@@ -1,47 +1,77 @@
-import React from 'react'
+import React from "react";
 import { HiOutlineCircleStack } from "react-icons/hi2";
 import { TiTick } from "react-icons/ti";
 import { FaArrowTrendDown } from "react-icons/fa6";
 import { FaArrowTrendUp } from "react-icons/fa6";
 
-
 const Boxes = () => {
+    const [valuesFromBackend, setValuesFromBackend] = useState([]);
+
+
+/*
+  useEffect(() => {
+
+    fetch('http://localhost:3000/')
+      .then((response) => response.json())
+      .then((dataFromBackend) => {
+        setValuesFromBackend(dataFromBackend);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+
+  const data = [
+    { title: 'Orders', icon: <HiOutlineCircleStack className='text-white' />, value: valuesFromBackend[0] },
+    { title: 'Orders Delivered', icon: <TiTick className='text-white' />, value: valuesFromBackend[1] },
+    { title: 'Orders in Progress', icon: <FaArrowTrendUp className='text-white' />, value: valuesFromBackend[2] },
+    { title: 'Orders Delayed', icon: <FaArrowTrendDown className='text-white' />, value: valuesFromBackend[3] },
+  ];
+
+ */
+
+
+  const data = [
+    {
+      title: "Orders",
+      icon: <HiOutlineCircleStack />,
+      value: "60",
+    },
+    { title: "Orders Delivered",
+     icon: <TiTick  />,
+     value: "60", },
+    {
+      title: "Orders in Progress",
+      icon: <FaArrowTrendUp />,
+      value: "60",
+    },
+    {
+      title: "Orders Delayed",
+      icon: <FaArrowTrendDown />,
+      value: "60",
+    },
+  ];
+
   return (
     <>
-    <div className='flex flex-wrap w-full items-center justify-center px-6 gap-8'>
-
-        <div className='flex flex-col items-start justify-start px-2 bg-gradient-to-r from-[#7BC5EE] to-[#928DF4] rounded-[29px]'>
-          <div className='flex gap-2 items-center justify-center text-md'>
-            <p className='text-white '>Orders</p>
-            <HiOutlineCircleStack className='text-white ' />
+      <div className="flex flex-wrap w-full items-center justify-center px-10 gap-16">
+        {data.map((item, index) => (
+          <div
+            key={index}
+            className="flex flex-col items-start justify-start  bg-gradient-to-r from-[#7BC5EE] to-[#928DF4] rounded-[29px] gap-6 py-2 px-4 w-48 h-40"
+          >
+            <div className="flex gap-2 items-center justify-center text-md pt-3 text-white">
+              <p >{item.title}</p>
+              {item.icon}
             </div>
-
-        </div>
-        <div className='flex flex-col items-start justify-start px-2 bg-gradient-to-r from-[#7BC5EE] to-[#928DF4] rounded-[29px]'>
-           <div className='flex gap-2 items-center justify-center text-md'>
-            <p className='text-white'>Orders Delivered</p>
-            <TiTick className='text-white ' />
-            </div>
-
-        </div>
-        <div className='flex flex-col items-start justify-start px-2 bg-gradient-to-r from-[#7BC5EE] to-[#928DF4] rounded-[29px]'>
-            <div className='flex gap-2 items-center justify-center text-md'>
-            <p className='text-white'>Orders in Progress</p>
-            <FaArrowTrendUp className='text-white' />
-            </div>
-
-        </div>
-        <div className='flex flex-col items-start justify-start px-2 bg-gradient-to-r from-[#7BC5EE] to-[#928DF4] rounded-[29px]'>
-           <div className='flex gap-2 items-center justify-center text-md'>
-            <p className='text-white'>Orders Delayed</p>
-            <FaArrowTrendDown className='text-white' />
-            </div>
-
-        </div>
-      
-    </div>
+            {item.value && <p className="text-white text-4xl font-bold">{item.value}</p>}
+          </div>
+        ))}
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Boxes
+export default Boxes;
+
+  
