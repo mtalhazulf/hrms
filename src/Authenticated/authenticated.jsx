@@ -13,6 +13,7 @@ import { getUser } from "../Integeration/Function";
 import Loading from "../Components/Shared/Loading";
 import AddMemberForm from "../Member/Add_member";
 import ViewMemberForm from "../Member/view_member";
+import ErrorPage from "../Error/ErrorPage";
 
 export const ProtectedRoute = ({ children }) => {
 
@@ -55,6 +56,14 @@ const AuthenticatedRoutes = () => {
     return (
         <>
             <Routes>
+
+
+            <Route path="*" element={
+                    <ProtectedRoute isAuthenticated={AuthStatus} >
+                        <ErrorPage />
+                    </ProtectedRoute>} />
+
+
                 <Route path="/admin" element={
                     <ProtectedRoute isAuthenticated={AuthStatus} >
                         <Overview />
@@ -95,8 +104,7 @@ const AuthenticatedRoutes = () => {
                         </div>
                     </ProtectedRoute>}
                 />
-
-                
+            
 
             </Routes>
         </>

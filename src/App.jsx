@@ -18,8 +18,7 @@ const App = () => {
             <Route exact path="team" element={<About />} />
             <Route exact path="about" element={<About />} />
             <Route exact path="logout" element={<LogOut />} />
-            <Route path="*" element={<ErrorPage />} />
-          </Route>
+           </Route>
         </Routes>
         <AuthenticatedRoutes />
       </BrowserRouter>
@@ -28,3 +27,6 @@ const App = () => {
 };
 
 export default App;
+
+/*  <Route exact path="*" element={<ErrorPage />} />
+          */
