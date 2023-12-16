@@ -55,11 +55,11 @@ const Boxes = () => {
 
   return (
     <>
-      <div className="flex flex-wrap w-full items-center justify-center px-10 md:gap-16 gap-4 mt-12">
+      <div className="flex flex-wrap w-full items-center justify-center px-10 md:gap-16 gap-4 mt-14">
         {data.map((item, index) => (
           <div
             key={index}
-            className="flex flex-col items-start justify-start  bg-gradient-to-r from-[#7BC5EE] to-[#928DF4] rounded-[29px] gap-6 py-2 px-4 w-52 h-40"
+            className="flex flex-col items-start justify-start  bg-gradient-to-r from-[#7BC5EE] to-[#928DF4] rounded-[29px] gap-6 py-2 px-4 w-56 h-40"
           >
             <div className="flex gap-2 items-center justify-center text-md pt-3 text-white">
               <p >{item.title}</p>
