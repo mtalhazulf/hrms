@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { IoArrowBack } from "react-icons/io5";
-import { getMember } from '../Integeration/Members'
+import { getMember ,deleteMember} from '../Integeration/Members'
 import Loading from '../Components/Shared/Loading'
-import { JSONTree } from 'react-json-tree';
+import { MdDelete } from "react-icons/md";
+import { AiOutlineLoading } from "react-icons/ai";
+
+import ConfirmationModal from '../Components/Shared/Confirmation';
 
 const ProjectDetails = ({ projects }) => {
     return (<>
@@ -22,7 +25,7 @@ const ProjectDetails = ({ projects }) => {
                             </tr>
                         </thead>
                         <tbody>
-                            {projects.map((project, index) => (
+                            {projects?.map((project, index) => (
                                 <tr key={index}>
                                     <td className="p-2">{project.projects.name}</td>
                                     <td className="p-2">{project.projects.deadline}</td>
@@ -78,9 +81,10 @@ const LinkedServicesDetails = ({ service }) => {
 
 const ViewMemberForm = () => {
     const navigate = useNavigate();
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const param = useParams();
-
+    const [DeleteLoading, setDeleteLoading] = useState(false);
+    const [ConfirmationModalOpen, setConfirmationModalOpen] = useState(false);
     const [member, setMember] = useState();
 
     useEffect(() => {
@@ -96,21 +100,46 @@ const ViewMemberForm = () => {
         getDetails();
     }, []);
 
+    async function deleteMemberfromDB() {
+        console.log('Deleting member');
+        setDeleteLoading(true);
+        try {
+            await deleteMember(param.id);
+        } catch (error) {
+            console.error('Error Deleting member:', error);
+        }
+        setDeleteLoading(false);
+    }
 
     return (
         <>
             {
                 loading ? <Loading /> :
-                    <>
-                        <button className="bg-gradient-to-r from-[#7DC2EF] to-[#928EF4] rounded-lg p-2 px-4 text-sm mb-5" onClick={(e) => {
-                            e.preventDefault();
-                            navigate('/member');
-                        }}>
-                            <IoArrowBack />
-                        </button>
+                    <div className='w-full h-full'>
+                        <div className="flex flex-row justify-between items-center">
+                            <button className="bg-gradient-to-r from-[#7DC2EF] to-[#928EF4] rounded-lg p-2 px-4 text-2xl mb-5" onClick={(e) => {
+                                e.preventDefault();
+                                navigate('/member');
+                            }}>
+                                <IoArrowBack />
+                            </button>
 
-                        {/* <JSONTree data={member} /> */}
-                        <div className="bg-[#323A4494] text-white p-4 rounded-lg m-2 ">
+                            <button className="bg-gradient-to-r from-[#7DC2EF] to-[#928EF4] rounded-lg p-2 px-4 mb-5 text-red-600 text-2xl " onClick={(e) => {
+                                e.preventDefault();
+                                setConfirmationModalOpen(true);
+                            }}>
+                                {DeleteLoading ? <AiOutlineLoading className="animate-spin" /> :  <MdDelete />}
+                            </button>
+
+                            <ConfirmationModal isOpen={ConfirmationModalOpen} onClose={() => { setConfirmationModalOpen(false) }} 
+                            onConfirm={async () => { 
+                                deleteMemberfromDB();
+                                setConfirmationModalOpen(false);
+                            }} />
+                        </div>
+                            
+                        {
+                            member === undefined ? <></> :<div className="bg-[#323A4494] text-white p-4 rounded-lg m-2 ">
                             <div className="overflow-x-auto">
                                 <table className="w-full">
                                     <tbody>
@@ -149,11 +178,13 @@ const ViewMemberForm = () => {
                                     </tbody>
                                 </table>
                             </div>
-
                         </div>
+                        }
+
+                        
                         <ProjectDetails projects={member?.assigned_projects} />
                         <LinkedServicesDetails service={member?.user_linking_data} />
-                    </>
+                    </div>
             }
         </>
     );

@@ -9,7 +9,7 @@ import { GoPerson } from "react-icons/go";
 import logo from "../../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 
-const Sidebar = ({isSidebarOpen,setSidebarOpen}) => {
+const Sidebar = ({ isSidebarOpen, setSidebarOpen }) => {
 
   const navigate = useNavigate();
   const toggleSidebar = () => {
@@ -21,11 +21,14 @@ const Sidebar = ({isSidebarOpen,setSidebarOpen}) => {
 
   const buttons = [
     { name: "Dashboard", icon: <AiOutlineAppstore size={icon_size} />, href: "/admin" },
+    { name: "Projects", icon: <AiFillPieChart size={icon_size} />, href: "/projects" },
     { name: "Members", icon: <GoPerson size={icon_size} />, href: "/member" },
     { name: "Team", icon: <AiOutlineTeam size={icon_size} />, href: "/teams" },
-    { name: "Projects", icon: <AiFillPieChart size={icon_size} />, href: "/proj" },
     { name: "Events", icon: <BsFillCalendarDateFill size={icon_size} />, href: "/events" },
     { name: "Messages", icon: <AiOutlineMessage size={icon_size} />, href: "/msg" },
+  ];
+
+  const downButtons = [
     { name: "Logout", icon: <AiOutlineClose size={icon_size} />, href: "/logout" },
   ];
 
@@ -43,38 +46,63 @@ const Sidebar = ({isSidebarOpen,setSidebarOpen}) => {
         </div>
       </>
     )}
-
-    <nav className={`bg-[#434F5F] text-white transition-all duration-300 ease-in-out  h-full ${isSidebarOpen ? "translate-x-0 py-6 " : " py-8 hidden lg:block  "
+    <nav className={`bg-[#434F5F] text-white transition-all duration-300 ease-in-out  h-full ${isSidebarOpen ? "translate-x-0 py-3 min-h-screen md:h-full " : " py-1 hidden lg:block  "
       }  `}>
-      {isSidebarOpen && (
-        <center ><button
-          type="button"
-          className=" lg:hidden block mt-3 mb-6 rounded-full bg-neutral-300 text-black focus:outline-none "
-          onClick={toggleSidebar}
+
+      <div className="flex flex-col w-full h-full space-between justify-between items-center ">
+        {isSidebarOpen && (
+          <center ><button
+            type="button"
+            className=" lg:hidden block mt-3 mb-6 rounded-full bg-neutral-300 text-black focus:outline-none "
+            onClick={toggleSidebar}
+          >
+            <AiOutlineClose size={30} />
+          </button>
+          </center>
+        )}
+
+        <div className="mb-6">
+          <img src={logo} alt="Logo" className="w-16 h-full m-auto" loading="lazy" />
+        </div>
+
+        <div
+          role="navigation"
+          className={`h-full ${buttons.length > 4 ? "overflow-y-scroll" : ""}  `}
         >
-          <AiOutlineClose size={30} />
-        </button>
-        </center>
-      )}
-      <div className="mb-8">
-        <img src={logo} alt="Logo" className="w-16 h-full m-auto" loading="lazy" />
-      </div>
-      <div role="navigation h-full ">
-        {buttons.map((item, i) => (
-          <div
-            key={i}
-            className={`flex p-4 flex-col items-center mb-4 cursor-pointer ${window.location.pathname === item.href ? "bg-[#394653] shadow-inner" : ""
-              }`}
-            onClick={() => {navigate(item.href)}}
-            role="link"
-            tabIndex={0}
-          >{item.icon}
-            <div>{item.name}</div>
-          </div>
-        ))}
+          {buttons.map((item, i) => (
+            <div
+              key={i}
+              className={`flex p-4 flex-col items-center mb-4 cursor-pointer ${window.location.pathname === item.href ? "bg-[#394653] shadow-inner" : ""
+                }`}
+              onClick={() => { navigate(item.href) }}
+              role="link"
+              tabIndex={0}
+            >
+              {item.icon}
+              <div>{item.name}</div>
+            </div>
+          ))}
+        </div>
+
+
+        <div role="navigation h-full  ">
+          {downButtons.map((item, i) => (
+            <div
+              key={i}
+              className={`flex  flex-col items-center cursor-pointer ${window.location.pathname === item.href ? "bg-[#394653] shadow-inner" : ""
+                }`}
+              onClick={() => { navigate(item.href) }}
+              role="link"
+              tabIndex={0}
+            >{item.icon}
+              <div>{item.name}</div>
+            </div>
+          ))}
+        </div>
+
       </div>
     </nav>
-    </>
+  </>
   );
 };
 

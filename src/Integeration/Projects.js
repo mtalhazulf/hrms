@@ -13,3 +13,18 @@ export const getProjects = async () => {
     console.log(response.data)
     return response.data;
 }
+
+export const getProject = async (id) => {
+    const token = await getAccessToken();
+    const params = {
+        id: id
+    }
+    const response = await axios.get(`${Backend}/data/project`, {
+        params: params,
+        headers: {
+            authorization: `${token}`
+        }
+    });
+    console.log(response.data);
+    return response.data;
+}

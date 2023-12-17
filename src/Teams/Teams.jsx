@@ -4,7 +4,7 @@ import Template from "./Template";
 
 const Teams = () => {
   return (
-    <div className="flex flex-col w-full min-h-screen  space-y-8 bg-[#181D23] relative overflow-y-auto ">
+    <div className="flex flex-col w-full h-[90%] md:min-h-screen  space-y-8 bg-[#181D23] relative overflow-y-auto ">
       <Heading />
       <Template />
     </div>

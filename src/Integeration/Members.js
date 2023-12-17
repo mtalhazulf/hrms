@@ -2,7 +2,6 @@ import axios from "axios";
 const Backend = import.meta.env.VITE_BACKEND;
 import { getAccessToken } from "./Function"
 import { SetMembers } from "../Redux-Store/Features/Team-Members"
-import { data } from "autoprefixer";
 
 export const getMember = async (id) => {
     const token = await getAccessToken();
@@ -36,6 +35,21 @@ export const getMembers = async (dispatch) => {
 export const addMember = async (data) => {
     const token = await getAccessToken();
     const response = await axios.post(`${Backend}/member/add_member`, data, {
+        headers: {
+            authorization: `${token}`
+        }
+    });
+    console.log(response.data)
+    return response.data;
+}
+
+export const deleteMember = async (id) => {
+    const token = await getAccessToken();
+    const params = {
+        id: id
+    }
+    const response = await axios.delete(`${Backend}/member/delete_member`, {
+        params: params,
         headers: {
             authorization: `${token}`
         }

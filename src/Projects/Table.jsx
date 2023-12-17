@@ -8,7 +8,7 @@ import { getProjects } from "../Integeration/Projects";
 const Template = () => {
 
   const navigate = useNavigate();
-  const heading = ["Project Name", "Team Lead","Started At", "Deadline","Members", "Milestone", "Options"];
+  const heading = ["Project Name", "Team Lead", "Started At", "Deadline", "Members", "Milestone", "Options"];
 
   const [Project, setProject] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
@@ -29,44 +29,48 @@ const Template = () => {
     <>
       {
         loading ? <Loading /> :
-          <div className="overflow-x-auto w-full p-20">
+          <div className="w-full p-4 md:p-6 lg:p-20">
             <div className="flex w-full justify-end ">
               <button className="bg-gradient-to-r from-[#7DC2EF] to-[#928EF4] rounded-lg p-2 px-4 text-sm m-4" onClick={(e) => {
                 e.preventDefault();
-                navigate('/add_member');
+                navigate('/add_project');
               }}>
                 Add Project
               </button>
             </div>
-            <table className="min-w-full w-full bg-[#323A4494] text-white rounded-xl text-center">
-              <thead className="w-full ">
-                <tr>
-                  {heading.map((item, index) => (
-                    <th key={index} className="px-4 py-2 text-md font-bold">
-                      {item}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {Project?.map((item, index) => (
-                  <tr key={index} className="border-b border-white border-opacity-10 w-full">
-                    <td className="px-4 py-2 font-semibold">{item.name}</td>
-                    <td className="px-4 py-2 font-semibold">{item.team_lead
-                    }</td>
-                    <td className="px-4 py-2 font-semibold">{new Date(item.created_at).toLocaleDateString()}</td>
-                    <td className="px-4 py-2 font-semibold">{new Date(item.deadline).toLocaleDateString()}</td>
-                    <td className="px-4 py-2 font-bold">{item.assigned_projects.length}</td>
-                    <td className="px-4 py-2 font-bold">{item.milestones.length}</td>
-                    <td className="px-4 py-2">
-                      <button className="bg-gradient-to-r from-[#7DC2EF] to-[#928EF4] rounded-lg p-2 px-4 text-sm">
-                        View Details
-                      </button>
-                    </td>
+            <div className="overflow-x-auto ">
+
+              <table className="min-w-full w-full bg-[#323A4494] text-white rounded-xl text-center ">
+                <thead className="w-full ">
+                  <tr>
+                    {heading.map((item, index) => (
+                      <th key={index} className="px-4 py-2 text-md font-bold">
+                        {item}
+                      </th>
+                    ))}
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {Project?.map((item, index) => (
+                    <tr key={index} className="border-b border-white border-opacity-10 w-full">
+                      <td className="px-4 py-2 font-semibold">{item.name}</td>
+                      <td className="px-4 py-2 font-semibold">{item.team_lead
+                      }</td>
+                      <td className="px-4 py-2 font-semibold">{new Date(item.created_at).toLocaleDateString()}</td>
+                      <td className="px-4 py-2 font-semibold">{new Date(item.deadline).toLocaleDateString()}</td>
+                      <td className="px-4 py-2 font-bold">{item.assigned_projects.length}</td>
+                      <td className="px-4 py-2 font-bold">{item.milestones.length}</td>
+                      <td className="px-4 py-2">
+                        <button className="bg-gradient-to-r from-[#7DC2EF] to-[#928EF4] rounded-lg p-2 px-4 text-sm" onClick={() => { navigate('/view_project/' + item.id) }}>
+                          View Details
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+
+            </div>
           </div>
       }
     </>
