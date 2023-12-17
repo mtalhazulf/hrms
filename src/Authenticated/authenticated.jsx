@@ -13,6 +13,7 @@ import { getUser } from "../Integeration/Function";
 import Loading from "../Components/Shared/Loading";
 import AddMemberForm from "../Member/Add_member";
 import ViewMemberForm from "../Member/view_member";
+import ErrorPage from "../Error/ErrorPage";
 import ViewProjectForm from "../Projects/view_project";
 import AddProjectForm from "../Projects/Add_project";
 
@@ -57,6 +58,14 @@ const AuthenticatedRoutes = () => {
     return (
         <>
             <Routes>
+
+
+            <Route path="*" element={
+                    <ProtectedRoute isAuthenticated={AuthStatus} >
+                        <ErrorPage />
+                    </ProtectedRoute>} />
+
+
                 <Route path="/admin" element={
                     <ProtectedRoute isAuthenticated={AuthStatus} >
                         <Overview />
@@ -76,51 +85,15 @@ const AuthenticatedRoutes = () => {
                         </ProtectedRoute>}
                     />
 
-                    <Route exact path="/view_member/:id" element={
-                        <ProtectedRoute isAuthenticated={AuthStatus} >
-                            <div className="overflow-x-auto w-full h-full p-4 md:p-20 bg-[#181D23]">
-                                <ViewMemberForm />
-                            </div>
-                        </ProtectedRoute>}
-                    />
-                </>
-
-                {/* FOR PROJECTS */}
-                <>
-                    <Route path="/projects" element={<ProtectedRoute isAuthenticated={AuthStatus} >
-                        <Projects />
-                    </ProtectedRoute>} />
-
-                    <Route path="/view_project/:id" element={<ProtectedRoute isAuthenticated={AuthStatus} >
+                <Route exact path="/view_member/:id" element={
+                    <ProtectedRoute isAuthenticated={AuthStatus} >
                         <div className="overflow-x-auto w-full h-full p-4 md:p-20 bg-[#181D23]">
-                            <ViewProjectForm />
+                            <ViewMemberForm />
                         </div>
-                    </ProtectedRoute>} />
+                    </ProtectedRoute>}
+                />
 
-                    <Route path="/add_project/" element={<ProtectedRoute isAuthenticated={AuthStatus} >
-                        <div className="overflow-x-auto w-full h-full p-4 md:p-20 bg-[#181D23]">
-                            <AddProjectForm />
-                        </div>
-                    </ProtectedRoute>} />
-
-                </>
-
-
-                <Route path="/teams" element={<ProtectedRoute isAuthenticated={AuthStatus} >
-                    <Teams />
-                </ProtectedRoute>} />
-
-                <Route path="/events" element={<ProtectedRoute isAuthenticated={AuthStatus} >
-                    <Events />
-                </ProtectedRoute>} />
-
-                <Route path="/msg" element={<ProtectedRoute isAuthenticated={AuthStatus} >
-                    <Messages />
-                </ProtectedRoute>} />
-
-
-
-
+                
 
             </Routes>
         </>
