@@ -13,9 +13,9 @@ import { getUser } from "../Integeration/Function";
 import Loading from "../Components/Shared/Loading";
 import AddMemberForm from "../Member/Add_member";
 import ViewMemberForm from "../Member/view_member";
-import ErrorPage from "../Error/ErrorPage";
 import ViewProjectForm from "../Projects/view_project";
 import AddProjectForm from "../Projects/Add_project";
+import ErrorPage from "../Error/ErrorPage";
 
 export const ProtectedRoute = ({ children }) => {
 
@@ -53,49 +53,13 @@ export const ProtectedRoute = ({ children }) => {
 
 const AuthenticatedRoutes = () => {
 
-    const [AuthStatus, setAuthStatus] = React.useState(true);
 
     return (
         <>
             <Routes>
-
-
-            <Route path="*" element={
-                    <ProtectedRoute isAuthenticated={AuthStatus} >
-                        <ErrorPage />
-                    </ProtectedRoute>} />
-
-
-                <Route path="/admin" element={
-                    <ProtectedRoute isAuthenticated={AuthStatus} >
-                        <Overview />
-                    </ProtectedRoute>} />
-
-                {/* FOR MEMBERS */}
-                <>
-                    <Route path="/member" element={<ProtectedRoute isAuthenticated={AuthStatus} >
-                        <Members />
-                    </ProtectedRoute>} />
-
-                    <Route exact path="/add_member" element={
-                        <ProtectedRoute isAuthenticated={AuthStatus} >
-                            <div className="overflow-x-auto w-full h-full p-4 md:p-20 bg-[#181D23]">
-                                <AddMemberForm />
-                            </div>
-                        </ProtectedRoute>}
-                    />
-
-                <Route exact path="/view_member/:id" element={
-                    <ProtectedRoute isAuthenticated={AuthStatus} >
-                        <div className="overflow-x-auto w-full h-full p-4 md:p-20 bg-[#181D23]">
-                            <ViewMemberForm />
-                        </div>
-                    </ProtectedRoute>}
-                />
-
                 
 
-            </Routes>
+            </Routes >
         </>
     );
 };

@@ -26,7 +26,8 @@ const AddProjectForm = () => {
                     className="bg-gradient-to-r from-[#7DC2EF] to-[#928EF4] rounded-lg p-2 px-4 text-sm mb-5"
                     onClick={(e) => {
                         e.preventDefault();
-                        navigate('/Project');
+                        //navigate('/Project');
+                        history.back();
                     }}>
                     <IoArrowBack />
                 </button>
@@ -40,14 +41,14 @@ const AddProjectForm = () => {
                         className="w-full p-4 rounded-lg bg-[#323A4494] text-white"
                     />
 
-                    <div className='flex flex-row '>
+                    <div className='flex lg:flex-row flex-col'>
                         <input
                             type="number"
                             name="price"
                             placeholder="Price"
                             value={project.price}
                             onChange={(e) => setProject({ ...project, price: e.target.value })}
-                            className="w-full p-4 rounded-lg bg-[#323A4494] text-white md:mr-2"
+                            className="w-full p-4 rounded-lg bg-[#323A4494] text-white lg:mr-2"
                         />
                         <input
                             type="number"
@@ -55,7 +56,7 @@ const AddProjectForm = () => {
                             placeholder="Milestones"
                             value={project.milestones}
                             onChange={(e) => setProject({ ...project, milestones: e.target.value })}
-                            className="w-full p-4 rounded-lg bg-[#323A4494] text-white md:mr-2"
+                            className="w-full p-4 rounded-lg bg-[#323A4494] text-white  mt-2 mb-2 lg:mr-2 lg:mt-0 lg:mb-0"
                         />
                         {switchstatement(project?.status)}
                     </div>
@@ -68,22 +69,25 @@ const AddProjectForm = () => {
                         onChange={(e) => setProject({ ...project, description: e.target.value })}
                         className="w-full p-4 rounded-lg bg-[#323A4494] text-white"
                     ></textarea>
-                    <input
-                        type="datetime-local"
-                        name="deadline"
-                        value={project.deadline}
-                        onChange={(e) => setProject({ ...project, deadline: e.target.value })}
-                        className="w-full p-4 rounded-lg bg-[#323A4494] text-white"
-                        required
-                    />
-                    <input
-                        type="text"
-                        name="team_lead"
-                        placeholder="Team Lead"
-                        value={project.team_lead}
-                        onChange={(e) => setProject({ ...project, team_lead: e.target.value })}
-                        className="w-full p-4 rounded-lg bg-[#323A4494] text-white"
-                    />
+                    <div className='flex lg:flex-row flex-col'>
+                        <input
+                            type="datetime-local"
+                            name="deadline"
+                            value={project.deadline}
+                            onChange={(e) => setProject({ ...project, deadline: e.target.value })}
+                            className="w-full p-4 rounded-lg bg-[#323A4494] text-white md:mr-2"
+                            required
+                        />
+                        <input
+                            type="text"
+                            name="team_lead"
+                            placeholder="Team Lead"
+                            value={project.team_lead}
+                            onChange={(e) => setProject({ ...project, team_lead: e.target.value })}
+                            className="w-full p-4 rounded-lg bg-[#323A4494] text-white mt-2 lg:mr-2 lg:mt-0 "
+                        />
+                    </div>
+
 
 
                     {/* Submit button */}

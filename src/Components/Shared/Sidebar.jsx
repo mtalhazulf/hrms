@@ -25,7 +25,7 @@ const Sidebar = ({ isSidebarOpen, setSidebarOpen }) => {
     { name: "Members", icon: <GoPerson size={icon_size} />, href: "/member" },
     { name: "Team", icon: <AiOutlineTeam size={icon_size} />, href: "/teams" },
     { name: "Events", icon: <BsFillCalendarDateFill size={icon_size} />, href: "/events" },
-    { name: "Messages", icon: <AiOutlineMessage size={icon_size} />, href: "/msg" },
+    { name: "Notifications", icon: <AiOutlineMessage size={icon_size} />, href: "/msg" },
   ];
 
   const downButtons = [

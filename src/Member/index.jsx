@@ -3,7 +3,6 @@ import Table from "./Table";
 const Member = () => {
   return (
     <div className="flex flex-col w-full h-full  lg:h-screen space-y-8 bg-[#181D23] relative  ">
-      <Heading />
       <Table />
     </div>
   );
