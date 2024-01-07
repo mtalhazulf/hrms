@@ -10,7 +10,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
-
+  // Regular Expression to make sure email entered is valid.
   const validateEmail = (email) => {
     const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     return regex.test(email);
