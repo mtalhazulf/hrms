@@ -7,6 +7,7 @@ import { addMember } from '../Integeration/Members'
 const AddMemberForm = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
+    // By default add Talha Zulf. Also serves as a pointer for developers.
     const [member, setMember] = useState({
         personal_email: 'l202177@lhr.nu.edu.pk',
         email: 'mtalhazulf@texagon.io',
