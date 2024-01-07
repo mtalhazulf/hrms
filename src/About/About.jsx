@@ -2,6 +2,7 @@ import React from "react";
 import Sidebar from "../Components/Shared/Sidebar";
 
 const About = () => {
+// Array for mapping profiles.
   const dataArray = [
     {
       id: 1,
