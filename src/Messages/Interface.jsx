@@ -28,7 +28,6 @@ const Interface = ({ data }) => {
 
 export default Interface;
 
-/*  */
 
 
 
