@@ -18,6 +18,7 @@ import ViewMemberForm from "./Member/view_member";
 import ViewProjectForm from "./Projects/view_project";
 import AddProjectForm from "./Projects/Add_project";
 import AboutUs from "./Bio/index";
+import SearchBar from "./Projects/SearchBar";
 const App = () => {
   const [AuthStatus, setAuthStatus] = React.useState(true);
 
@@ -33,6 +34,7 @@ const App = () => {
             <Route exact path="logout" element={<LogOut />} />
             <Route exact path="about-us" element={<AboutUs />} />
             <Route path="*" element={<ErrorPage />} />
+            <Route path="search" element={<SearchBar />} />
 
             <Route path="/admin" element={
                     <ProtectedRoute isAuthenticated={AuthStatus} >
