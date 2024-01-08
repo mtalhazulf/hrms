@@ -36,20 +36,20 @@ const Boxes = () => {
     {
       title: "Orders",
       icon: <HiOutlineCircleStack />,
-      value: "60",
+      value: "24",
     },
     { title: "Orders Delivered",
      icon: <TiTick  />,
-     value: "60", },
+     value: "08", },
     {
       title: "Orders in Progress",
       icon: <FaArrowTrendUp />,
-      value: "60",
+      value: "12",
     },
     {
       title: "Orders Delayed",
       icon: <FaArrowTrendDown />,
-      value: "60",
+      value: "4",
     },
   ];
 
