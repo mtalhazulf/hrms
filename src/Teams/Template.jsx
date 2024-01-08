@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Template = () => {
 
   const navigate = useNavigate();
-  const heading = ["Project Name", "Members"];
+  const heading = ["Team Name", "Members"];
 
   const [Project, setProject] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
