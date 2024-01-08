@@ -64,7 +64,7 @@ const Project = () => {
   };
 
   return (
-    <div className='md:w-[60%] w-full bg-[#2D353F] flex flex-col items-start justify-center p-4 rounded-md'>
+    <div className='md:w-[70%] w-full bg-[#2D353F] flex flex-col items-start justify-center p-4 rounded-md'>
         <p className='text-white text-md mb-2'>Project Deliveries</p>
     <div className='w-full h-48'>
       <Line data={data} options={options} />

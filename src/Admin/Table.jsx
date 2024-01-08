@@ -43,7 +43,7 @@ const Table = () => {
   ];
 
   return (
-    <div className="bg-[#2D353F] flex flex-col items-start justify-start p-4 md:w-[50%] w-full rounded-md">
+    <div className="bg-[#2D353F] flex flex-col items-start justify-start p-4 md:w-[60%] w-full rounded-md">
       <p className="text-white text-md font-semibold">Project Statistics</p>
 
       {data.map((entry, index) => (

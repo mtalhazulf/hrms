@@ -88,10 +88,7 @@ const App = () => {
                     <Teams />
                 </ProtectedRoute>} />
 
-                <Route path="/events" element={<ProtectedRoute isAuthenticated={AuthStatus} >
-                    <Events />
-                </ProtectedRoute>} />
-
+              
                 <Route path="/msg" element={<ProtectedRoute isAuthenticated={AuthStatus} >
                     <Messages />
                 </ProtectedRoute>} />
