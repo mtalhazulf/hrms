@@ -19,6 +19,7 @@ import ViewProjectForm from "./Projects/view_project";
 import AddProjectForm from "./Projects/Add_project";
 import AboutUs from "./Bio/index";
 import SearchBar from "./Projects/SearchBar";
+import Profile from "./Profile/Profile";
 const App = () => {
   const [AuthStatus, setAuthStatus] = React.useState(true);
 
@@ -88,6 +89,11 @@ const App = () => {
                 <Route path="/teams" element={<ProtectedRoute isAuthenticated={AuthStatus} >
                     <Teams />
                 </ProtectedRoute>} />
+
+                <Route path="/profile" element={<ProtectedRoute isAuthenticated={AuthStatus} >
+                    <Profile />
+                </ProtectedRoute>} />
+
 
               
                 <Route path="/msg" element={<ProtectedRoute isAuthenticated={AuthStatus} >

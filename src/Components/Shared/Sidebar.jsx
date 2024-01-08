@@ -4,7 +4,8 @@ import { AiOutlineTeam } from "react-icons/ai";
 import { AiOutlineMessage } from "react-icons/ai";
 import { AiOutlineMenu } from "react-icons/ai";
 import { AiOutlineClose } from "react-icons/ai";
-import { BsFillCalendarDateFill } from "react-icons/bs";
+import { ImProfile } from "react-icons/im";
+
 import { GoPerson } from "react-icons/go";
 import logo from "../../assets/logo.png";
 import { useNavigate } from "react-router-dom";
@@ -25,6 +26,9 @@ const Sidebar = ({ isSidebarOpen, setSidebarOpen }) => {
     { name: "Members", icon: <GoPerson size={icon_size} />, href: "/member" },
     { name: "Team", icon: <AiOutlineTeam size={icon_size} />, href: "/teams" },
     { name: "Notifications", icon: <AiOutlineMessage size={icon_size} />, href: "/msg" },
+    { name: "Profile", icon: <ImProfile size={icon_size} />, href: "/profile" },
+    
+
   ];
 
   const downButtons = [
