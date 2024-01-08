@@ -24,7 +24,6 @@ const Sidebar = ({ isSidebarOpen, setSidebarOpen }) => {
     { name: "Projects", icon: <AiFillPieChart size={icon_size} />, href: "/projects" },
     { name: "Members", icon: <GoPerson size={icon_size} />, href: "/member" },
     { name: "Team", icon: <AiOutlineTeam size={icon_size} />, href: "/teams" },
-    { name: "Events", icon: <BsFillCalendarDateFill size={icon_size} />, href: "/events" },
     { name: "Notifications", icon: <AiOutlineMessage size={icon_size} />, href: "/msg" },
   ];
 
@@ -67,7 +66,7 @@ const Sidebar = ({ isSidebarOpen, setSidebarOpen }) => {
 
         <div
           role="navigation"
-          className={`h-full ${buttons.length > 4 ? "overflow-y-scroll" : ""}  `}
+          className={`h-full ${buttons.length > 4 ? "overflow-y-auto" : ""}  `}
         >
           {buttons.map((item, i) => (
             <div
