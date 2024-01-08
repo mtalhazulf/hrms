@@ -10,6 +10,7 @@ import { switchstatement } from './ProjectStatus';
 import ConfirmationModal from '../Components/Shared/Confirmation';
 import ShowInfo from '../Components/Shared/ShowInfo';
 import { getProject } from '../Integeration/Projects';
+import {deleteProject} from "../Integeration/Projects"
 
 const ProjectDetails = ({ projects }) => {
     const [ConfirmationModalOpen, setConfirmationModalOpen] = useState(false);
@@ -130,10 +131,10 @@ const ViewProjectForm = () => {
     }, []);
 
     async function deleteMemberfromDB() {
-        console.log('Deleting member');
         setDeleteLoading(true);
         try {
-            await deleteMember(param.id);
+            await deleteProject(param.id);
+            navigate('/projects');
         } catch (error) {
             console.error('Error Deleting member:', error);
         }

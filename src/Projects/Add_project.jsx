@@ -3,21 +3,24 @@ import { useNavigate } from 'react-router-dom';
 import { IoArrowBack } from 'react-icons/io5';
 import { switchstatement } from './ProjectStatus';
 import { useDispatch } from "react-redux";
+import {addProject} from "../Integeration/Projects.js";
 
 
 const AddProjectForm = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [project, setProject] = useState({ status: 'Not Started' });
-
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
+
         try {
             await addProject(project);
         } catch (error) {
             console.error('Error adding Project:', error);
         }
+        
         setLoading(false);
     };
 
