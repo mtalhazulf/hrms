@@ -8,8 +8,11 @@ const Template = () => {
   const navigate = useNavigate();
   const heading = ["Team Name", "Members"];
 
-  const [Project, setProject] = React.useState([]);
-  const [loading, setLoading] = React.useState(false);
+  const [Team, setTeam] = React.useState([{
+    "TeamName": "King Team",
+    "Members": "5"
+  }]);
+  // const [loading, setLoading] = React.useState(false);
 
   useEffect(() => {
     async function getProjectsfromSupabase() {
@@ -46,18 +49,12 @@ const Template = () => {
             </tr>
           </thead>
           <tbody>
-            {/* {data?.map((item, index) => (
+            {Team?.map((item, index) => (
                 <tr key={index} className="border-b border-white border-opacity-10 w-full">
-                  <td className="px-4 py-2 font-bold">{item.name}</td>
-                  <td className="px-4 py-2 font-semibold">{item.email}</td>
-                  <td className="px-4 py-2 font-bold">{item.assigned_projects.length}</td>
-                  <td className="px-4 py-2">
-                    <button className="bg-gradient-to-r from-[#7DC2EF] to-[#928EF4] rounded-lg p-2 px-4 text-sm">
-                      View Details
-                    </button>
-                  </td>
+                  <td className="px-4 py-2 font-bold">{item.TeamName}</td>
+                  <td className="px-4 py-2 font-semibold">{item.Members}</td>
                 </tr>
-              ))} */}
+              ))}
           </tbody>
         </table>
       </div>
