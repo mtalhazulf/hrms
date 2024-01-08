@@ -34,8 +34,7 @@ const App = () => {
             <Route exact path="logout" element={<LogOut />} />
             <Route exact path="about-us" element={<AboutUs />} />
             <Route path="*" element={<ErrorPage />} />
-            <Route path="search" element={<SearchBar />} />
-
+          
             <Route path="/admin" element={
                     <ProtectedRoute isAuthenticated={AuthStatus} >
                         <Overview />

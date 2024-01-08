@@ -4,6 +4,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import Loading from "../Components/Shared/Loading";
 import { getProjects } from "../Integeration/Projects";
+import SearchBar from "./SearchBar";
 
 const Template = () => {
 
@@ -28,7 +29,9 @@ const Template = () => {
   return (
     <>
       {
-        loading ? <Loading /> :
+        loading ? <Loading />  :
+        <>
+        <SearchBar />
           <div className="w-full p-4 md:p-6 lg:p-20">
             <div className="flex w-full justify-end ">
               <button className="bg-gradient-to-r from-[#7DC2EF] to-[#928EF4] rounded-lg p-2 px-4 text-sm m-4" onClick={(e) => {
@@ -72,6 +75,7 @@ const Template = () => {
 
             </div>
           </div>
+        </>
       }
     </>
   );
